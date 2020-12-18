@@ -76,18 +76,19 @@
         <div class="topNavBar-inner clearfix">
 
 
+
             <a class="logo" href="#" alt="logo" style="float: left">
         <span class="rs">RS</span>
         <span class="Card">card</span>
-        </a>
+            </a>
 
             <nav class="menu" style="float: right">
                 <ul class="clearfix">
-                    <li><a href="#">关于</a></li>
-                    <li><a href="#">技能</a></li>
+                    <li><a href="#siteAbout">关于</a></li>
+                    <li><a href="#siteSkills">技能</a></li>
 
-                    <li class >
-                        <a href="#">作品</a>
+                    <li class>
+                        <a href="#siteWorks">作品</a>
                         <ul class = "submenu">
                          <li>作品1</li>
                          <li>作品2</li>
@@ -116,7 +117,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <main class="userCard">
+        <main id = "siteAbout" class="userCard">
 
             <div class="pictureAndText clearfix">
                 <div class="picture">
@@ -164,7 +165,8 @@
 
 
             </footer>
-        </main>
+
+
         <p class="downloadResume-wrapper">
             <a class="downloadResume" href="./resume.pdf" target="_blank" download>下载 PDF 简历</a>
         </p>
@@ -175,7 +177,9 @@
 
 
         </p>
-        <section class="skills">
+        </main>
+
+        <section id = "siteSkills" class="skills">
             <h2>技能</h2>
             <ol class="clearfix">
                 <li>
@@ -228,7 +232,7 @@
                 </li>
             </ol>
         </section>
-        <section class="portfolio">
+        <section class="portfolio" id ="siteWorks">
             <h2>作品集</h2>
             <nav>
                 <ol class="clearfix">
@@ -280,7 +284,7 @@
                }
             }
 
-            let liTags = document.querySelectorAll('nav.menu > ul >li')
+            let liTags = document.querySelectorAll("nav.menu > ul >li")
 
 
             for(let i =0; i<liTags.length;i++){
@@ -292,6 +296,19 @@
                    x.currentTarget.classList.remove('active')
                 }
             }
+
+            let aTags = document.querySelectorAll("nav.menu > ul >li >a")
+            for(let i =0;i <aTags.length;i++){
+                aTags[i].onclick =function(x){
+                    x.preventDefault()
+                    let a = x.currentTarget
+                    let href = a.getAttribute('href')// #siteabout
+                    let element = document.querySelector(href)
+                    let top = element.offsetTop
+                    window.scrollTo(0, top - 80)
+                }
+            }
+
 
 
 
