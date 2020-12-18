@@ -81,19 +81,22 @@
         <span class="Card">card</span>
         </a>
 
-            <nav style="float: right">
+            <nav class="menu" style="float: right">
                 <ul class="clearfix">
                     <li><a href="#">关于</a></li>
                     <li><a href="#">技能</a></li>
 
-                    <li><a class ="menuTrigger"href="#">作品</a>
+                    <li class >
+                        <a href="#">作品</a>
                         <ul class = "submenu">
                          <li>作品1</li>
                          <li>作品2</li>
                          <li>作品3</li>
                         </ul>
                     </li>
-                    <li><a class ="menuTrigger"href="#">博客</a>
+
+                    <li class >
+                        <a href="#">博客</a>
                         <ul class = "submenu">
                             <li>博客1</li>
                             <li>博客2</li>
@@ -277,22 +280,20 @@
                }
             }
 
-            let aTags = document.getElementsByClassName("menuTrigger")
-            console.log(aTags)
+            let liTags = document.querySelectorAll('nav.menu > ul >li')
 
-            for(let i =0; i<aTags.length;i++){
-                aTags[i].onmouseenter = function (x){
-                   let a = x.currentTarget
-                    let brother =a.nextSibling
-                    while (brother.nodeType === 3){
-                       brother = brother.nextSibling
-                    }
-                    console.log(brother)
+
+            for(let i =0; i<liTags.length;i++){
+                liTags[i].onmouseenter = function (x){
+                   x.currentTarget.classList.add('active')
+
                 }
-                aTags[i].onmouseleave = function(){
-                    console.log("mouseleave")
+                liTags[i].onmouseleave = function(x){
+                   x.currentTarget.classList.remove('active')
                 }
             }
+
+
 
 
 
